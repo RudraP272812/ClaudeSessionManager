@@ -21,7 +21,7 @@
                 </Border.Style>
                 <Grid ToolTip="{Binding FilePath}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="26"/>
+                        <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="240"/>
                         <ColumnDefinition Width="46"/>
@@ -29,7 +29,7 @@
                         <ColumnDefinition Width="36"/>
                     </Grid.ColumnDefinitions>
 
-                    <CheckBox Grid.Column="0" VerticalAlignment="Center"
+                    <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"
                               IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="4,0,10,0">

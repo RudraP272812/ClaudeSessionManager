@@ -6,6 +6,7 @@
         Title="ClaudeSessionManager"
         Width="1080" Height="760"
         Background="{StaticResource BgBrush}"
+        ExtendsContentIntoTitleBar="True"
         WindowStartupLocation="CenterScreen">
 
     <Grid>
@@ -14,20 +15,22 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Branded navbar -->
-        <Border Grid.Row="0" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="16,10">
-            <StackPanel Orientation="Horizontal">
-                <Viewbox Width="26" Height="26">
-                    <Path Data="M8 36 L16 36 L21 22 L27 48 L33 16 L39 36 L46 36 L53 46 L58 26"
-                          Stroke="{StaticResource AccentBrush}" StrokeThickness="4.2"
-                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
-                </Viewbox>
-                <TextBlock Text="ClaudeSessionManager" FontSize="15" FontWeight="SemiBold"
-                           Foreground="{StaticResource TextBrush}" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                <TextBlock Text="by TraceFix" FontSize="11" Foreground="{StaticResource MutedTextBrush}"
-                           VerticalAlignment="Bottom" Margin="8,0,0,2"/>
-            </StackPanel>
-        </Border>
+        <!-- Branded title bar (replaces the native OS title bar entirely) -->
+        <ui:TitleBar Grid.Row="0" Background="{StaticResource PanelBrush}">
+            <ui:TitleBar.Header>
+                <StackPanel Orientation="Horizontal" Margin="12,0,0,0">
+                    <Viewbox Width="22" Height="22">
+                        <Path Data="M8 36 L16 36 L21 22 L27 48 L33 16 L39 36 L46 36 L53 46 L58 26"
+                              Stroke="{StaticResource AccentBrush}" StrokeThickness="4.2"
+                              StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+                    </Viewbox>
+                    <TextBlock Text="ClaudeSessionManager" FontSize="13" FontWeight="SemiBold"
+                               Foreground="{StaticResource TextBrush}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    <TextBlock Text="by TraceFix" FontSize="11" Foreground="{StaticResource MutedTextBrush}"
+                               VerticalAlignment="Center" Margin="8,2,0,0"/>
+                </StackPanel>
+            </ui:TitleBar.Header>
+        </ui:TitleBar>
 
         <ui:NavigationView Grid.Row="1" x:Name="RootNavigationView" PaneDisplayMode="Top"
                             IsBackButtonVisible="Collapsed" IsPaneToggleVisible="False">
