@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.4
+
+- Repo cleanup: removed the stale winget manifests for v1.0.0-v1.0.2 (those versions couldn't run at all and were never submitted anywhere, so there was no reason to keep them around). Only the current version's manifest is kept going forward.
+
 ## v1.0.3
 
 - **Fixed the app not running at all on other machines.** v1.0.0–v1.0.2 shipped only `ClaudeSessionManager.exe`, but the self-contained build actually needed six native DLLs (WPF's rendering/input interop layer, SQLite) sitting next to it — those were never uploaded, so the app couldn't start once downloaded anywhere but this dev machine. The build now sets `IncludeNativeLibrariesForSelfExtract`/`IncludeAllContentForSelfExtract` so everything is bundled into the single `.exe`, and this has been verified by copying only that file to an empty folder and running it from there.

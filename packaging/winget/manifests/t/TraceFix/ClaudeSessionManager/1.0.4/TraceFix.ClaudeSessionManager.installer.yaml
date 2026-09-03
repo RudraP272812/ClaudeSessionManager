@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://aka.ms/winget-manifest.installer.1.6.0.schema.json
 PackageIdentifier: TraceFix.ClaudeSessionManager
-PackageVersion: 1.0.3
+PackageVersion: 1.0.4
 Platform:
   - Windows.Desktop
 MinimumOSVersion: 10.0.17763.0
@@ -12,7 +12,7 @@ InstallModes:
 UpgradeBehavior: install
 Installers:
   - Architecture: x64
-    InstallerUrl: https://github.com/RudraP272812/ClaudeSessionManager/releases/download/v1.0.3/ClaudeSessionManager.exe
-    InstallerSha256: 64CD893B22C464D988510CFDF2994A95A2C4F5471899AEC156688530F0E1AC0F
+    InstallerUrl: https://github.com/RudraP272812/ClaudeSessionManager/releases/download/v1.0.4/ClaudeSessionManager.exe
+    InstallerSha256: D428B560E13E21CB6CA0E3769F0F55839E5062C447B536A8BAD6089C409002B0
 ManifestType: installer
 ManifestVersion: 1.6.0
