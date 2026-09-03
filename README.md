@@ -21,11 +21,14 @@ Claude Code has no delete button, no cleanup command, nothing in its own interfa
 
 **[⬇ Download for Windows](https://github.com/RudraP272812/ClaudeSessionManager/releases/latest)** — free installer, no account, no telemetry.
 
-Or from a terminal, once the winget listing is live:
+Or from a terminal, right now, via [Scoop](https://scoop.sh):
 
 ```powershell
-winget install TraceFix.ClaudeSessionManager
+scoop bucket add tracefix https://github.com/RudraP272812/ClaudeSessionManager
+scoop install claudesessionmanager
 ```
+
+A `winget install` listing has been prepared (see `packaging/winget/`) but isn't usable yet — it only works once submitted to and approved by Microsoft's public winget-pkgs catalog, which is a separate review process outside this repo.
 
 ## Features
 
