@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>ClaudeSessionManager</AssemblyName>
     <RootNamespace>ClaudeSessionManager</RootNamespace>
-    <ApplicationIcon></ApplicationIcon>
+    <ApplicationIcon>branding\tracefix.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
