@@ -9,6 +9,8 @@
     <AssemblyName>ClaudeSessionManager</AssemblyName>
     <RootNamespace>ClaudeSessionManager</RootNamespace>
     <ApplicationIcon>branding\tracefix.ico</ApplicationIcon>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
   </PropertyGroup>
 
   <ItemGroup>
