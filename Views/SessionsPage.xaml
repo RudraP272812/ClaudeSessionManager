@@ -8,7 +8,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
 
         <DataTemplate x:Key="SessionRowTemplate" DataType="{x:Type models:ClaudeSession}">
-            <Border Padding="10,8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+            <Border Padding="16,12" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Setter Property="Background" Value="Transparent"/>
@@ -21,7 +21,7 @@
                 </Border.Style>
                 <Grid ToolTip="{Binding FilePath}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="52"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="240"/>
                         <ColumnDefinition Width="46"/>
@@ -29,10 +29,11 @@
                         <ColumnDefinition Width="36"/>
                     </Grid.ColumnDefinitions>
 
-                    <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"
+                    <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left"
+                              Margin="4,0,0,0"
                               IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
 
-                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="4,0,10,0">
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="8,0,10,0">
                         <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextBrush}"
                                    FontSize="13" TextTrimming="CharacterEllipsis"/>
                         <TextBlock Text="{Binding SessionId}" Foreground="{StaticResource MutedTextBrush}"
@@ -113,7 +114,7 @@
                                             <Expander IsExpanded="True" Foreground="{StaticResource TextBrush}"
                                                       Background="{StaticResource PanelBrush}" Padding="0">
                                                 <Expander.Header>
-                                                    <StackPanel Orientation="Horizontal" Margin="4,4">
+                                                    <StackPanel Orientation="Horizontal" Margin="16,8">
                                                         <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="12"/>
                                                         <Border Background="#3C3C3C" CornerRadius="8" Margin="8,0,0,0" Padding="7,1">
                                                             <TextBlock Text="{Binding ItemCount}" FontSize="10" Foreground="{StaticResource TextBrush}"/>

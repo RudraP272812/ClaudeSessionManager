@@ -4,3 +4,4 @@ obj/
 .claude/
 publish/
 *.user
+*_wpftmp.csproj
