@@ -13,6 +13,10 @@
 
 A free Windows desktop app that finds every **Claude Code** CLI session on your machine and lets you search, review, and **delete session history** in bulk — no more hunting through `.jsonl` files by hand.
 
+## Why this exists
+
+Claude Code has no delete button, no cleanup command, nothing in its own interface to remove old session history — every session it ever creates stays on disk forever under `~/.claude/projects`, whether you still need it or not. We ran into this ourselves: sessions piling up with no first-party way to clear any of them out. ClaudeSessionManager exists to close that one gap — a real interface to see everything Claude Code has saved, and delete what you don't need.
+
 ## Download
 
 **[⬇ Download for Windows](https://github.com/RudraP272812/ClaudeSessionManager/releases/latest)** — free installer, no account, no telemetry.
@@ -63,8 +67,19 @@ The source code in this repository is licensed under the MIT License (see [LICEN
 
 ## Contact
 
-tracefix.dev@gmail.com
+rudrapatel201@gmail.com
 
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+## How to download
+
+1. Go to the [latest release](https://github.com/RudraP272812/ClaudeSessionManager/releases/latest).
+2. Under **Assets**, click `ClaudeSessionManager.exe`.
+
+![The release page's Assets section, with ClaudeSessionManager.exe listed](docs/download-release-page.png)
+
+3. Because this is a new app with no download history yet, your browser may warn that the file "isn't commonly downloaded." That's just Chrome/Edge's reputation check — it hasn't seen enough downloads of this specific file, not a sign of an actual problem. The source code above is everything the app does; see [Privacy](#privacy) for why it's safe to run.
+4. If you see that warning: click the **•••** next to the blocked download in your downloads bar → **Keep** (you may be asked to confirm once more — choose **Keep anyway**).
+5. Run `ClaudeSessionManager.exe` — it's a single portable file, no installer, no setup wizard.
