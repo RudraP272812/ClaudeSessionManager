@@ -1,0 +1,39 @@
+<ui:FluentWindow x:Class="ClaudeSessionManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        xmlns:views="clr-namespace:ClaudeSessionManager.Views"
+        Title="ClaudeSessionManager"
+        Width="1080" Height="760"
+        Background="{StaticResource BgBrush}"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Branded navbar -->
+        <Border Grid.Row="0" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1" Padding="16,10">
+            <StackPanel Orientation="Horizontal">
+                <Viewbox Width="26" Height="26">
+                    <Path Data="M8 36 L16 36 L21 22 L27 48 L33 16 L39 36 L46 36 L53 46 L58 26"
+                          Stroke="{StaticResource AccentBrush}" StrokeThickness="4.2"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"/>
+                </Viewbox>
+                <TextBlock Text="ClaudeSessionManager" FontSize="15" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextBrush}" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock Text="by TraceFix" FontSize="11" Foreground="{StaticResource MutedTextBrush}"
+                           VerticalAlignment="Bottom" Margin="8,0,0,2"/>
+            </StackPanel>
+        </Border>
+
+        <ui:NavigationView Grid.Row="1" x:Name="RootNavigationView" PaneDisplayMode="Top"
+                            IsBackButtonVisible="Collapsed" IsPaneToggleVisible="False">
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Content="Sessions" TargetPageType="{x:Type views:SessionsPage}"/>
+            </ui:NavigationView.MenuItems>
+        </ui:NavigationView>
+    </Grid>
+</ui:FluentWindow>

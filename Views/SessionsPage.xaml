@@ -1,0 +1,146 @@
+<Page x:Class="ClaudeSessionManager.Views.SessionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:models="clr-namespace:ClaudeSessionManager.Models"
+      Background="{StaticResource BgBrush}">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+        <DataTemplate x:Key="SessionRowTemplate" DataType="{x:Type models:ClaudeSession}">
+            <Border Padding="10,8" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource RowHoverBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Grid ToolTip="{Binding FilePath}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="26"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="240"/>
+                        <ColumnDefinition Width="46"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="36"/>
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox Grid.Column="0" VerticalAlignment="Center"
+                              IsChecked="{Binding IsSelected, Mode=TwoWay}"/>
+
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="4,0,10,0">
+                        <TextBlock Text="{Binding Title}" Foreground="{StaticResource TextBrush}"
+                                   FontSize="13" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Text="{Binding SessionId}" Foreground="{StaticResource MutedTextBrush}"
+                                   FontSize="10" TextTrimming="CharacterEllipsis" Margin="0,2,0,0"/>
+                    </StackPanel>
+
+                    <TextBlock Grid.Column="2" Text="{Binding ProjectDisplayName}"
+                               Foreground="{StaticResource MutedTextBrush}" FontSize="11"
+                               VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="0,0,10,0"/>
+
+                    <TextBlock Grid.Column="3" Text="{Binding RelativeTime}"
+                               Foreground="{StaticResource MutedTextBrush}" FontSize="11"
+                               VerticalAlignment="Center" HorizontalAlignment="Right"/>
+
+                    <Border Grid.Column="4" Background="{StaticResource ArchivedBadgeBrush}" CornerRadius="8"
+                            Padding="6,2" HorizontalAlignment="Right" VerticalAlignment="Center"
+                            Visibility="{Binding Archived, Converter={StaticResource BoolToVis}}">
+                        <TextBlock Text="Archived" FontSize="9" Foreground="{StaticResource ArchivedBadgeTextBrush}"/>
+                    </Border>
+
+                    <Button Grid.Column="5" Content="&#128465;" Style="{StaticResource IconButton}"
+                            Click="DeleteButton_Click" ToolTip="Delete this session"/>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <Border Grid.Row="0" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Margin="12,10" >
+                <TextBlock Text="Claude Code Sessions" Foreground="{StaticResource TextBrush}" FontSize="16" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                <TextBox x:Name="SearchBox" Width="260" Margin="20,0,0,0" VerticalAlignment="Center"
+                         TextChanged="SearchBox_TextChanged"
+                         ToolTip="Filter by title, project, or session id"/>
+                <CheckBox x:Name="SelectAllCheckBox" Content="Select all visible" Foreground="{StaticResource TextBrush}"
+                          VerticalAlignment="Center" Margin="20,0,0,0" Click="SelectAllCheckBox_Click"/>
+                <Button Content="Delete Selected" Style="{StaticResource ToolbarButton}" Margin="16,0,0,0"
+                        Background="#5A1D1D" Click="DeleteSelectedButton_Click" x:Name="DeleteSelectedButton"/>
+                <Button Content="Refresh" Style="{StaticResource ToolbarButton}" Margin="8,0,0,0" Click="RefreshButton_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- List -->
+        <Grid Grid.Row="1">
+            <ListBox x:Name="SessionsListBox" Background="Transparent" BorderThickness="0"
+                     ItemTemplate="{StaticResource SessionRowTemplate}"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     SelectionMode="Extended">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <ContentPresenter/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="GroupItem">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="GroupItem">
+                                            <Expander IsExpanded="True" Foreground="{StaticResource TextBrush}"
+                                                      Background="{StaticResource PanelBrush}" Padding="0">
+                                                <Expander.Header>
+                                                    <StackPanel Orientation="Horizontal" Margin="4,4">
+                                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" FontSize="12"/>
+                                                        <Border Background="#3C3C3C" CornerRadius="8" Margin="8,0,0,0" Padding="7,1">
+                                                            <TextBlock Text="{Binding ItemCount}" FontSize="10" Foreground="{StaticResource TextBrush}"/>
+                                                        </Border>
+                                                    </StackPanel>
+                                                </Expander.Header>
+                                                <ItemsPresenter/>
+                                            </Expander>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </ListBox.GroupStyle>
+            </ListBox>
+
+            <TextBlock x:Name="EmptyStateText" Text="No Claude Code sessions found."
+                       Foreground="{StaticResource MutedTextBrush}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       Visibility="Collapsed"/>
+        </Grid>
+
+        <!-- Status bar -->
+        <Border Grid.Row="2" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,1,0,0">
+            <TextBlock x:Name="StatusText" Text="Loading..." Foreground="{StaticResource MutedTextBrush}"
+                       Margin="12,6" FontSize="11"/>
+        </Border>
+    </Grid>
+</Page>

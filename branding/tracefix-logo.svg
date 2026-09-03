@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 160" width="600" height="160">
+  <rect width="600" height="160" rx="20" fill="#1E1E1E"/>
+  <g transform="translate(60,36) scale(1.5)">
+    <path d="M8 36 L16 36 L21 22 L27 48 L33 16 L39 36 L46 36 L53 46 L58 26"
+          fill="none" stroke="#3794FF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="225" y="98" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="700" fill="#F2F2F2">TraceFix</text>
+</svg>

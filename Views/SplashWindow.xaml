@@ -1,0 +1,80 @@
+<Window x:Class="ClaudeSessionManager.Views.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ClaudeSessionManager"
+        Width="480" Height="360"
+        WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="False"
+        Background="{StaticResource BgBrush}"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Storyboard x:Key="IntroStoryboard">
+            <DoubleAnimation Storyboard.TargetName="LogoScale" Storyboard.TargetProperty="ScaleX"
+                              From="0.6" To="1" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="LogoScale" Storyboard.TargetProperty="ScaleY"
+                              From="0.6" To="1" Duration="0:0:0.5">
+                <DoubleAnimation.EasingFunction>
+                    <BackEase EasingMode="EaseOut" Amplitude="0.4"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="LogoPath" Storyboard.TargetProperty="Opacity"
+                              From="0" To="1" Duration="0:0:0.4"/>
+            <DoubleAnimation Storyboard.TargetName="LogoPath" Storyboard.TargetProperty="StrokeDashOffset"
+                              From="40" To="0" Duration="0:0:0.7">
+                <DoubleAnimation.EasingFunction>
+                    <QuadraticEase EasingMode="EaseOut"/>
+                </DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="Wordmark" Storyboard.TargetProperty="Opacity"
+                              From="0" To="1" BeginTime="0:0:0.3" Duration="0:0:0.5"/>
+            <DoubleAnimation Storyboard.TargetName="Tagline" Storyboard.TargetProperty="Opacity"
+                              From="0" To="1" BeginTime="0:0:0.5" Duration="0:0:0.5"/>
+            <DoubleAnimation Storyboard.TargetName="ActionPanel" Storyboard.TargetProperty="Opacity"
+                              From="0" To="1" BeginTime="0:0:0.7" Duration="0:0:0.5"/>
+        </Storyboard>
+    </Window.Resources>
+
+    <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+        <Grid>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                <Viewbox Width="72" Height="72" RenderTransformOrigin="0.5,0.5">
+                    <Viewbox.RenderTransform>
+                        <ScaleTransform x:Name="LogoScale" ScaleX="0.6" ScaleY="0.6"/>
+                    </Viewbox.RenderTransform>
+                    <Path x:Name="LogoPath"
+                          Data="M8 36 L16 36 L21 22 L27 48 L33 16 L39 36 L46 36 L53 46 L58 26"
+                          Stroke="{StaticResource AccentBrush}" StrokeThickness="4.2"
+                          StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round"
+                          StrokeDashArray="40,40" Opacity="0"/>
+                </Viewbox>
+
+                <TextBlock x:Name="Wordmark" Text="TraceFix" Opacity="0"
+                           FontSize="28" FontWeight="Bold" Foreground="{StaticResource TextBrush}"
+                           HorizontalAlignment="Center" Margin="0,14,0,0"/>
+
+                <TextBlock x:Name="Tagline" Text="ClaudeSessionManager" Opacity="0"
+                           FontSize="12" Foreground="{StaticResource MutedTextBrush}"
+                           HorizontalAlignment="Center" Margin="0,4,0,0"/>
+
+                <StackPanel x:Name="ActionPanel" Opacity="0" Margin="0,32,0,0" HorizontalAlignment="Center">
+                    <Button x:Name="StartButton" Content="Start" Width="140" Height="36"
+                            Style="{StaticResource ToolbarButton}" FontSize="14"
+                            Click="StartButton_Click"/>
+
+                    <StackPanel x:Name="LoadingPanel" Visibility="Collapsed" Width="200" Margin="0,4,0,0">
+                        <ProgressBar IsIndeterminate="True" Height="4" Background="{StaticResource PanelBrush}"
+                                     Foreground="{StaticResource AccentBrush}" BorderThickness="0"/>
+                        <TextBlock Text="Loading sessions…" Foreground="{StaticResource MutedTextBrush}"
+                                   FontSize="11" HorizontalAlignment="Center" Margin="0,8,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
