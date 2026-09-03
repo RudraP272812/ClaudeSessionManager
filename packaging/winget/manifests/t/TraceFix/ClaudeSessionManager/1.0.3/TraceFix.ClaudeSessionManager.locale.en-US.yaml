@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+PackageIdentifier: TraceFix.ClaudeSessionManager
+PackageVersion: 1.0.3
+PackageLocale: en-US
+Publisher: TraceFix
+PublisherUrl: https://github.com/RudraP272812
+PackageName: ClaudeSessionManager
+PackageUrl: https://github.com/RudraP272812/ClaudeSessionManager
+License: MIT
+LicenseUrl: https://github.com/RudraP272812/ClaudeSessionManager/blob/main/LICENSE
+ShortDescription: View, manage, and clean up Claude Code CLI session history on Windows.
+Description: >-
+  ClaudeSessionManager is a Windows desktop app for browsing, searching, and
+  deleting Claude Code CLI session history. It scans local session transcripts
+  and the VS Code Claude Code extension cache to show session titles, projects,
+  and archived state, so you can remove old or archived sessions in bulk.
+Tags:
+  - claude
+  - claude-code
+  - developer-tools
+  - session-manager
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

@@ -1,10 +1,10 @@
 {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "View, manage, and clean up Claude Code CLI session history on Windows.",
     "homepage": "https://github.com/RudraP272812/ClaudeSessionManager",
     "license": "MIT",
-    "url": "https://github.com/RudraP272812/ClaudeSessionManager/releases/download/v1.0.2/ClaudeSessionManager.exe",
-    "hash": "b1934d7138df1f69c0bd264b1439b0ce6a2588fef1e8954f968c53685d2d8cec",
+    "url": "https://github.com/RudraP272812/ClaudeSessionManager/releases/download/v1.0.3/ClaudeSessionManager.exe",
+    "hash": "64cd893b22c464d988510cfdf2994a95a2c4f5471899aec156688530f0e1ac0f",
     "bin": "ClaudeSessionManager.exe",
     "shortcuts": [
         [ "ClaudeSessionManager.exe", "ClaudeSessionManager" ]
