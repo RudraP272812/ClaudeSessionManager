@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.2
+
+- Added a real TraceFix taskbar/app icon (hand-drawn multi-size `.ico`, built directly from the mark's own path data) — the app no longer shows the generic default icon in the taskbar and Alt-Tab.
+- Gave session rows more breathing room: wider checkbox column, more row padding, and the group header now lines up with row content instead of sitting flush against the edge.
+
 ## v1.0.1
 
 - Fixed the app shell chrome: the branded navbar and the native OS title bar were rendering as two disconnected bars. The TraceFix branding now lives in a real title bar (`ui:TitleBar` with `ExtendsContentIntoTitleBar`), so the icon, name, and window buttons render as one themed bar.
